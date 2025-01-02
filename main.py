@@ -16,7 +16,7 @@ intents = nextcord.Intents.all()
 add_reactions = True #check this out later
 #intents.messages = True
 client = commands.Bot(command_prefix="&", intents=intents, activity=nextcord.Game(name='.hengus on discord')) #used for setting the 'playing' status
-#activity = nextcord.Activity(name="NOAHS BOOTY", type=discord.ActivityType.watching)
+#activity = nextcord.Activity(name="***** BOOTY", type=discord.ActivityType.watching)
 
 #saves the bot token as variable 'token'
 with open('opToken', 'r') as f:
@@ -193,14 +193,14 @@ async def on_message(message):
     #print(message.guild.roles)
 
 # this works, it will annoy
-#     if 586286153368600576 == message.author.id: #remington
+#     if 586286153368600576 == message.author.id: #hengus
 #         await message.add_reaction("👍")
-#     elif 658135980297158659 == message.author.id: #andrew
+#     elif 658135980297158659 == message.author.id: #archen
 #         await message.add_reaction("🤓")
 #     await client.process_commands(message)
 
     # this works, it will annoy
-    # if 776273258948460544 == message.author.id: #alex
+    # if 776273258948460544 == message.author.id: #boykiss
     #     await message.add_reaction("💋")
 
     await client.process_commands(message)
