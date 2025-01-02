@@ -180,13 +180,13 @@ async def on_message(message):
         pass
     '''
     watch for a specific message sent, then type something in response
-    can be BRUTALLY exploited, please fix later : )
+    can be BRUTALLY exploited, please fix below code later : )
     '''
-    if "you" and "should" and "watch" in message.content.casefold():
-        await message.channel.send("No")
-        pass
-    else:
-        pass
+    # if "you" and "should" and "watch" in message.content.casefold():
+    #     await message.channel.send("No")
+    #     pass
+    # else:
+    #     pass
 
     #used for displaying available roles for a server
     #print(message.guild.roles)
