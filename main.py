@@ -211,7 +211,7 @@ if __name__ == "__main__":
 '''
 Things to do:
 
-Add to GitHub
+Add to GitHub ✅
 Claim dev badge
 add DB / file that can be used to append with dict to see how many times a person has been sent a gif
 
