@@ -1,8 +1,10 @@
 import nextcord
+from discord import Guild
 from nextcord.ext import commands
+from nextcord import application_command
 #from nextcord import FFmpegPCMAudio #if the prog messing up, uncomment this
 import random
-
+#from discord_slash import SlashCommand, SlashContext
 from nextcord.types.interactions import Interaction
 
 import asyncio
@@ -16,6 +18,7 @@ intents = nextcord.Intents.all()
 add_reactions = True #check this out later
 #intents.messages = True
 client = commands.Bot(command_prefix="&", intents=intents, activity=nextcord.Game(name='.hengus on discord')) #used for setting the 'playing' status
+#tree = application_command.CommandTree(client)
 #activity = nextcord.Activity(name="***** BOOTY", type=discord.ActivityType.watching)
 
 #saves the bot token as variable 'token'
@@ -27,6 +30,10 @@ with open('opToken', 'r') as f:
 async def on_ready():
     print("The opposition is now ready to commence.")
     print("----------------------------------------")
+
+@client.slash_command(name="hello", description="Say hello!")
+async def hello(interaction: nextcord.Interaction):
+    await interaction.response.send_message("Hello, world!")
 
 
 #ping pong
@@ -214,7 +221,7 @@ Things to do:
 
 Add to GitHub ✅
 Claim dev badge
-add DB / file that can be used to append with dict to see how many times a person has been sent a gif
+add file that can be used to append with dict to see how many times a person has been sent a gif
 
 
 '''
