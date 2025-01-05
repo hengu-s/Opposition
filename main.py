@@ -185,16 +185,16 @@ async def on_message(message):
         pass
     else:
         pass
-    '''
-    watch for a specific message sent, then type something in response
-    can be BRUTALLY exploited, please fix below code snippet later : )
+
+    # watch for a specific message sent, then type something in response
+    # can be BRUTALLY exploited, please fix below code snippet later : )
     
-    if "you" and "should" and "watch" in message.content.casefold():
-        await message.channel.send("No")
-        pass
-    else:
-        pass
-    '''
+    # if "you" and "should" and "watch" in message.content.casefold():
+    #     await message.channel.send("No")
+    #     pass
+    # else:
+    #     pass
+
 
     #used for displaying available roles for a server
     #print(message.guild.roles)
@@ -220,7 +220,7 @@ if __name__ == "__main__":
 Things to do:
 
 Add to GitHub ✅
-Claim dev badge
+Claim dev badge ✅
 add file that can be used to append with dict to see how many times a person has been sent a gif
 
 
