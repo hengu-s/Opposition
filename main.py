@@ -2,28 +2,27 @@ import nextcord
 from discord import Guild
 from nextcord.ext import commands
 from nextcord import application_command
-#from nextcord import FFmpegPCMAudio #if the prog messing up, uncomment this
 import random
-#from discord_slash import SlashCommand, SlashContext
 from nextcord.types.interactions import Interaction
-
+import google.generativeai as genai
+import requests
+from google.generativeai.types import HarmCategory, HarmBlockThreshold, safety_types, palm_safety_types
 import asyncio
-#import PyNaCl
-#from discord.utils import get
+
 
 percentage_chance = 0.069
 percentage_chance_rare = 0.001 #not in use as of now
 intents = nextcord.Intents.all()
-#intents.members = True
 add_reactions = True #check this out later
-#intents.messages = True
 client = commands.Bot(command_prefix="&", intents=intents, activity=nextcord.Game(name='.hengus on discord')) #used for setting the 'playing' status
-#tree = application_command.CommandTree(client)
-#activity = nextcord.Activity(name="***** BOOTY", type=discord.ActivityType.watching)
+
 
 #saves the bot token as variable 'token'
 with open('opToken', 'r') as f:
-    token = f.read()
+    discToken = f.read()
+
+with open('GeminiAPIKey', 'r') as f:
+    gemToken = f.read()
 
 #prints this when the bot starts in console
 @client.event
@@ -212,16 +211,50 @@ async def on_message(message):
 
     await client.process_commands(message)
 
+@client.command()
+async def ai(message):
+    genai.configure(api_key=gemToken)
+
+    #Don't believe code in curly braces actually called, fix later : )
+    generation_config = {
+      "temperature": 1,
+      "top_p": 0.95,
+      "top_k": 40,
+      "max_output_tokens": 500,
+      "response_mime_type": "text/plain",
+    }
+
+    model = genai.GenerativeModel(
+    model_name="gemini-2.0-flash-exp",
+    system_instruction="You are a very rude and mean person. An opposition.",
+    )
+
+    chat_session = model.start_chat(
+      history=[
+      ]
+    )
+
+    #I know its terrible, bear me the shame...
+    response = chat_session.send_message(message.message.content)
+
+    await message.channel.send(response.text)
+
+
 #runs bot with 'token' var
 if __name__ == "__main__":
-    client.run(token)
+    client.run(discToken)
 
 '''
+
 Things to do:
 
-Add to GitHub ✅
-Claim dev badge ✅
-add file that can be used to append with dict to see how many times a person has been sent a gif
-
+Add to GitHub ✅ 
+Claim dev badge ✅ 
+Add file that can be used to append with dict to see how many times a person has been sent a gif 
+Implement ai for trolling because im a ai FIEND ig ✅ 
+Implement sustaining chat history on the gemini AI
+Remove safety filters on the gemini AI *extra trolling* 
+See if there are limited chat tokens on the gemini AI 
+Look into training ai model from discord server | scraping
 
 '''
