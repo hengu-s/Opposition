@@ -126,6 +126,7 @@ async def darren(message):
         else:
             await message.send("Cannot join if you are not in a VC BRUH")
 
+
 @client.command()
 async def join(message):
     if message.author.voice:
