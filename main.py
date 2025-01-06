@@ -14,7 +14,7 @@ from google.cloud.aiplatform_v1beta1.types.content import SafetySetting
 percentage_chance = 0.069
 percentage_chance_rare = 0.001 #not in use as of now
 intents = nextcord.Intents.all()
-add_reactions = True #check this out later
+add_reactions = True
 client = commands.Bot(command_prefix="&", intents=intents, activity=nextcord.Game(name='.hengus on discord')) #used for setting the 'playing' status
 
 
@@ -22,7 +22,7 @@ client = commands.Bot(command_prefix="&", intents=intents, activity=nextcord.Gam
 with open('opToken', 'r') as f:
     discToken = f.read()
 
-with open('GeminiAPIKey', 'r') as f:
+with open('GeminiAPIKey.txt', 'r') as f:
     gemToken = f.read()
 
 #prints this when the bot starts in console
@@ -72,7 +72,7 @@ async def boom(message):
 
 @client.command()
 async def peter(message):
-    if message.author.id == 586286153368600576 or 449246777179111424:
+    if message.author.id == 586286153368600576 or 449246777179111424: #lee and I
         if message.author.voice:
             voice_channel = message.author.voice.channel
             voice = await voice_channel.connect()
@@ -114,7 +114,7 @@ async def nuke(message):
 
 @client.command()
 async def darren(message):
-    if message.author.id == 586286153368600576:
+    if message.author.id == 586286153368600576 or 776273258948460544 or 179780439450451968: #daryl, sinon, hengus
         if message.author.voice:
             voice_channel = message.author.voice.channel
             voice = await voice_channel.connect()
