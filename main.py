@@ -8,6 +8,7 @@ import google.generativeai as genai
 import requests
 from google.generativeai.types import HarmCategory, HarmBlockThreshold, safety_types, palm_safety_types
 import asyncio
+from google.cloud.aiplatform_v1beta1.types.content import SafetySetting
 
 
 percentage_chance = 0.069
@@ -107,6 +108,20 @@ async def nuke(message):
             audio_source = nextcord.PCMVolumeTransformer(audio_source, volume=2.0)  # DOUBLES the volume for the player
             voice.play(audio_source)
             await asyncio.sleep(28)
+            await message.guild.voice_client.disconnect()
+        else:
+            await message.send("Cannot join if you are not in a VC BRUH")
+
+@client.command()
+async def darren(message):
+    if message.author.id == 586286153368600576:
+        if message.author.voice:
+            voice_channel = message.author.voice.channel
+            voice = await voice_channel.connect()
+            audio_source = nextcord.FFmpegPCMAudio(source="yo darren, my dingaling a bigger.mp3", executable="C:/FFmpeg/ffmpeg")
+            audio_source = nextcord.PCMVolumeTransformer(audio_source, volume=2.0)  # DOUBLES the volume for the player
+            voice.play(audio_source)
+            await asyncio.sleep(35)
             await message.guild.voice_client.disconnect()
         else:
             await message.send("Cannot join if you are not in a VC BRUH")
@@ -224,6 +239,7 @@ async def ai(message):
       "response_mime_type": "text/plain",
     }
 
+
     model = genai.GenerativeModel(
     model_name="gemini-2.0-flash-exp",
     system_instruction="You are a very rude and mean person. An opposition.",
@@ -233,6 +249,8 @@ async def ai(message):
       history=[
       ]
     )
+
+
 
     #I know its terrible, bear me the shame...
     response = chat_session.send_message(message.message.content)
@@ -255,6 +273,6 @@ Implement ai for trolling because im a ai FIEND ig ✅
 Implement sustaining chat history on the gemini AI
 Remove safety filters on the gemini AI *extra trolling* 
 See if there are limited chat tokens on the gemini AI 
-Look into training ai model from discord server | scraping
+Look into training ai model from discord server | scraping 
 
 '''
