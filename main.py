@@ -12,7 +12,6 @@ from google.cloud.aiplatform_v1beta1.types.content import SafetySetting
 
 
 percentage_chance = 0.069
-percentage_chance_rare = 0.001 #not in use as of now
 intents = nextcord.Intents.all()
 add_reactions = True
 client = commands.Bot(command_prefix="&", intents=intents, activity=nextcord.Game(name='.hengus on discord')) #used for setting the 'playing' status
