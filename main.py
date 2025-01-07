@@ -125,6 +125,47 @@ async def darren(message):
         else:
             await message.send("Cannot join if you are not in a VC BRUH")
 
+@client.command()
+async def cat(message):
+    if message.author.id == 586286153368600576 or 574777088092012564: #hengus and nukester
+        if message.author.voice:
+            voice_channel = message.author.voice.channel
+            voice = await voice_channel.connect()
+            audio_source = nextcord.FFmpegPCMAudio(source="Cat Laughing At You.mp3", executable="C:/FFmpeg/ffmpeg")
+            audio_source = nextcord.PCMVolumeTransformer(audio_source, volume=1.0)  # DOUBLES the volume for the player
+            voice.play(audio_source)
+            await asyncio.sleep(3)
+            await message.guild.voice_client.disconnect()
+        else:
+            await message.send("Cannot join if you are not in a VC BRUH")
+
+@client.command()
+async def sponge(message):
+    if client.user.id != message.author.id: #everyone can use
+        if message.author.voice:
+            voice_channel = message.author.voice.channel
+            voice = await voice_channel.connect()
+            audio_source = nextcord.FFmpegPCMAudio(source="SpongeBob Soundtrack - _Daytime Drama_.mp3", executable="C:/FFmpeg/ffmpeg")
+            audio_source = nextcord.PCMVolumeTransformer(audio_source, volume=2.0)  # DOUBLES the volume for the player
+            voice.play(audio_source)
+            await asyncio.sleep(5)
+            await message.guild.voice_client.disconnect()
+        else:
+            await message.send("Cannot join if you are not in a VC BRUH")
+
+@client.command()
+async def king(message):
+    if message.author.id == 586286153368600576: #hengus
+        if message.author.voice:
+            voice_channel = message.author.voice.channel
+            voice = await voice_channel.connect()
+            audio_source = nextcord.FFmpegPCMAudio(source="who made that mess you did king Sound effect.mp3", executable="C:/FFmpeg/ffmpeg")
+            audio_source = nextcord.PCMVolumeTransformer(audio_source, volume=2.0)  # DOUBLES the volume for the player
+            voice.play(audio_source)
+            await asyncio.sleep(11)
+            await message.guild.voice_client.disconnect()
+        else:
+            await message.send("Cannot join if you are not in a VC BRUH")
 
 @client.command()
 async def join(message):
