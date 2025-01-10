@@ -179,6 +179,17 @@ async def darrenbass(message):
         await message.guild.voice_client.disconnect()
 
 @client.command()
+async def darrennew(message):
+    if message.author.id == 586286153368600576: #hengus
+        voice_channel = client.get_channel(732708928139427850)
+        voice = await voice_channel.connect()
+        audio_source = nextcord.FFmpegPCMAudio(source="yodarrennew.mp4", executable="C:/FFmpeg/ffmpeg")
+        audio_source = nextcord.PCMVolumeTransformer(audio_source, volume=2.0)  # DOUBLES the volume for the player
+        voice.play(audio_source)
+        await asyncio.sleep(5)
+        await message.guild.voice_client.disconnect()
+
+@client.command()
 async def join(message):
     if message.author.voice:
         channel = message.author.voice.channel
