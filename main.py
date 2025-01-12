@@ -9,6 +9,8 @@ import requests
 from google.generativeai.types import HarmCategory, HarmBlockThreshold, safety_types, palm_safety_types
 import asyncio
 from google.cloud.aiplatform_v1beta1.types.content import SafetySetting
+from inspect import getmembers, isfunction
+import numpy
 
 
 percentage_chance = 0.069
@@ -33,6 +35,44 @@ async def on_ready():
 @client.slash_command(name="hello", description="Say hello!")
 async def hello(interaction: nextcord.Interaction):
     await interaction.response.send_message("Hello, world!")
+
+
+# functions = [f for f in dir() if callable(eval(f)) and not f.startswith('__')]
+#
+# @client.slash_command(name="commands", description="Prints all commands")
+# async def commands(interaction: nextcord.Interaction):
+#     await interaction.response.send_message(functions)
+
+@client.slash_command(name="commands", description="Prints all commands")
+async def commands(interaction: nextcord.Interaction):
+    await (interaction.response.send_message
+    ('''
+    Here are the list of commands available:
+    
+    To hengus:
+    order66
+    boom
+    fork
+    nuke
+    western
+    django
+    king
+    darrenbass
+    
+    To certain people:
+    darrennew
+    darren
+    cat
+    peter
+    
+    To everyone:
+    ai
+    sponge
+    join
+    leave
+    '''))
+
+
 
 
 #ping pong
@@ -180,7 +220,7 @@ async def darrenbass(message):
 
 @client.command()
 async def darrennew(message):
-    if message.author.id == 586286153368600576: #hengus
+    if message.author.id == 586286153368600576 or 776273258948460544 or 449246777179111424: #hengus, daryl, lee
         voice_channel = client.get_channel(732708928139427850)
         voice = await voice_channel.connect()
         audio_source = nextcord.FFmpegPCMAudio(source="yodarrennew.mp4", executable="C:/FFmpeg/ffmpeg")
@@ -188,6 +228,25 @@ async def darrennew(message):
         voice.play(audio_source)
         await asyncio.sleep(5)
         await message.guild.voice_client.disconnect()
+
+@client.command()
+async def western(message):
+    if message.author.id == 586286153368600576: #hengus
+        voice_channel = message.author.voice.channel
+        voice = await voice_channel.connect()
+        audio_source = nextcord.FFmpegPCMAudio(source="All.Quiet.on.the.Western.Front.2022.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.H.264-SMURF.mkv", executable="C:/FFmpeg/ffmpeg")
+        audio_source = nextcord.PCMVolumeTransformer(audio_source, volume=2.0)  # DOUBLES the volume for the player
+        voice.play(audio_source)
+
+@client.command()
+async def django(message):
+    if message.author.id == 586286153368600576: #hengus
+        voice_channel = message.author.voice.channel
+        voice = await voice_channel.connect()
+        audio_source = nextcord.FFmpegPCMAudio(source="Django.Unchained.2012.1080p.BluRay.x264.YIFY.mp4", executable="C:/FFmpeg/ffmpeg")
+        audio_source = nextcord.PCMVolumeTransformer(audio_source, volume=2.0)  # DOUBLES the volume for the player
+        voice.play(audio_source)
+
 
 @client.command()
 async def join(message):
@@ -337,5 +396,6 @@ Implement sustaining chat history on the gemini AI
 Remove safety filters on the gemini AI *extra trolling* 
 See if there are limited chat tokens on the gemini AI 
 Look into training ai model from discord server | scraping 
+Allow it to automatically print the commands and not just my manually typed ones
 
 '''
