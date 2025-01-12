@@ -396,6 +396,6 @@ Implement sustaining chat history on the gemini AI
 Remove safety filters on the gemini AI *extra trolling* 
 See if there are limited chat tokens on the gemini AI 
 Look into training ai model from discord server | scraping 
-Allow it to automatically print the commands and not just my manually typed ones
+Allow /commands to automatically print the commands and not just my manually typed ones
 
 '''
